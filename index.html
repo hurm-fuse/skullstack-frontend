@@ -233,30 +233,16 @@
       </div>
 
       <div class="contact-form">
-        <form action="https://formsubmit.co/byteburial@gmail.com" method="POST">
-  <!-- Security -->
-  <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_next" value="https://skullstackweb.vercel.app/thankyou.html">
-  <input type="hidden" name="_subject" value="New Client | Skull Stack">
-  <input type="hidden" name="_autoresponse" value="Hi there,
+        <form action="https://api.web3forms.com/submit" method="POST">
+  <input type="hidden" name="access_key" value="7a984b0f-abed-447d-bca5-fbe82892106e">
+  <input type="hidden" name="redirect" value="thankyou.html">
+  <input type="hidden" name="subject" value="Mere Pyare Client 🎀">
 
-Thank you for contacting Skull Stack 🚀
+  <input type="text" name="name" placeholder="Your Name" required>
+  <input type="email" name="email" placeholder="Your Email" required>
+  <textarea name="message" placeholder="Your Message" required></textarea>
 
-We’ve received your message and will respond within 24 hours.
-
-Best regards,
-Skull Stack Team
-https://skullstackweb.vercel.app">
-
-  <!-- Honeypot Anti Spam -->
-  <input type="text" name="_honey" style="display:none">
-
-  <!-- Real Fields -->
-  <input type="text" name="Name" placeholder="Full Name" required>
-  <input type="email" name="Email" placeholder="Email Address" required>
-  <textarea name="Message" rows="5" placeholder="Tell us about your project..." required></textarea>
-
-  <button type="submit" class="btn-buy">Send Message</button>
+  <button type="submit">Submit</button>
 </form>
       </div>
     </div>
