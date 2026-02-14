@@ -288,6 +288,14 @@ https://skullstackweb.vercel.app">
   <!-- Razorpay Checkout Script -->
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
   <script src="js/main.js"></script>
+
+  <script>
+  const form = document.querySelector("form");
+  form.addEventListener("submit", () => {
+    const name = form.querySelector('input[name="Name"]').value;
+    localStorage.setItem("customerName", name);
+  });
+</script>
 </body>
 
 </html>

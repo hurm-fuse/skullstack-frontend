@@ -10,68 +10,15 @@
   <link rel="stylesheet" href="css/style.css">
 
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      background: #0f0f0f;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      text-align: center;
-    }
-
-    .thank-container {
-      max-width: 600px;
-      padding: 40px;
-      background: #1a1a1a;
-      border-radius: 12px;
-      box-shadow: 0 0 30px rgba(0,0,0,0.5);
-    }
-
-    .thank-container h1 {
-      font-size: 32px;
-      margin-bottom: 20px;
-      color: #00ffcc;
-    }
-
-    .thank-container p {
-      font-size: 18px;
-      margin-bottom: 30px;
-      line-height: 1.6;
-      color: #ccc;
-    }
-
-    .btn-back {
-      display: inline-block;
-      padding: 12px 25px;
-      background: #00ffcc;
-      color: black;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 6px;
-      transition: 0.3s;
-    }
-
-    .btn-back:hover {
-      background: white;
-    }
   </style>
 </head>
 
 <body>
+    <h1>🎉 Thank You! <span id="userName"></span></h1>
 
-  <div class="thank-container">
-    <h1>🎉 Thank You! ${res.name}</h1>
-    <p>
-      Your message has been successfully sent.  
-      Our team will review your inquiry and get back to you within 24 hours.
-    </p>
-
-    <a href="index.html" class="btn-back">Back to Homepage</a>
-  </div>
-
+<script>
+  const name = localStorage.getItem("customerName") || "Guest";
+  document.getElementById("userName").textContent = name;
+</script>
 </body>
 </html>
