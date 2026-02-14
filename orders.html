@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Orders | Skull Stack</title>
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+    <style>
+        body {
+            background: #D2042D;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 50px;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(6px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-links a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+        }
+
+        /* Orders Section */
+        .orders-section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 60px 80px;
+            min-height: 70vh;
+        }
+
+        .orders-section h1 {
+            text-align: center;
+            font-size: 42px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        #ordersContainer {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .order-card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 24px 28px;
+            cursor: pointer;
+            backdrop-filter: blur(6px);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .order-card h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin: 0 0 6px 0;
+            color: #FFFFFF;
+            letter-spacing: 0.5px;
+        }
+
+        .order-card p {
+            margin: 4px 0;
+            font-size: 15px;
+            opacity: 0.9;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .order-card p::before {
+            content: "•";
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: bold;
+            margin-right: 4px;
+        }
+
+        .order-card p:first-of-type::before {
+            content: "💰";
+            font-size: 14px;
+            margin-right: 6px;
+            opacity: 0.9;
+        }
+
+        .order-card p:nth-of-type(2)::before {
+            content: "✅";
+            font-size: 14px;
+            margin-right: 6px;
+            opacity: 0.9;
+        }
+
+        .order-card p:last-of-type::before {
+            content: "🆔";
+            font-size: 14px;
+            margin-right: 6px;
+            opacity: 0.9;
+        }
+
+        .order-card p:last-of-type {
+            font-size: 13px;
+            opacity: 0.7;
+            font-family: monospace;
+            letter-spacing: 0.3px;
+        }
+
+        .order-card p:nth-of-type(2) {
+            text-transform: capitalize;
+            font-weight: 500;
+        }
+
+        /* Empty state styling */
+        #ordersContainer p:only-child {
+            text-align: center;
+            font-size: 18px;
+            padding: 60px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            border: 1px dashed rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(4px);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <img style="border-radius: 10px; margin-bottom: -1px; margin-top: 3px; width: 50px;" src="logo.png"
+                    alt="">
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="orders.html">My Orders</a>
+            <a href="admin.html">Admin</a>
+        </div>
+    </nav>
+
+    <section class="orders-section">
+        <h1>My Orders</h1>
+        <div id="ordersContainer">
+            <!-- Orders will load here -->
+        </div>
+    </section>
+
+    <script>
+        const API_BASE = 'http://localhost:5002/api';
+
+        async function loadOrders() {
+            const token = localStorage.getItem('aethex_token');
+            if (!token) {
+                alert('Please login or purchase a service first.');
+                window.location.href = 'index.html';
+                return;
+            }
+
+            try {
+                const res = await fetch(`${API_BASE}/payment/my-orders`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+
+                const data = await res.json();
+
+                if (!res.ok) {
+                    alert(data.message || 'Error fetching orders');
+                    return;
+                }
+
+                const container = document.getElementById('ordersContainer');
+                container.innerHTML = '';
+
+                // ✅ Only show paid orders
+                const paidOrders = data.filter(order => order.status === 'paid');
+
+                if (paidOrders.length === 0) {
+                    container.innerHTML = '<p>No paid orders found yet.</p>';
+                    return;
+                }
+
+                paidOrders.forEach(order => {
+                    const div = document.createElement('div');
+                    div.classList.add('order-card');
+                    div.innerHTML = `
+                        <h3>${order.serviceName}</h3>
+                        <p>Amount: $${order.amount / 100}</p>
+                        <p>Status: ${order.status}</p>
+                        <p>Order ID: ${order._id}</p>
+                    `;
+
+                    // 🔥 Click order → open chat page
+                    div.addEventListener('click', () => {
+                        window.location.href = `chat.html?orderId=${order._id}`;
+                    });
+
+                    container.appendChild(div);
+                });
+
+            } catch (err) {
+                console.error(err);
+                alert('Failed to load orders.');
+            }
+        }
+
+        loadOrders();
+    </script>
+</body>
+
+</html>

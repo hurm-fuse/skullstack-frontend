@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skull Stack | Admin Panel</title>
+  <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <div class="admin-container">
+
+    <!-- Login Form (shown when not logged in) -->
+    <div class="admin-login" id="adminLogin">
+      <h2>Admin Login</h2>
+      <input type="email" id="adminEmail" placeholder="Admin Email" />
+      <input type="password" id="adminPassword" placeholder="Password" />
+      <button onclick="adminLogin()">Login</button>
+    </div>
+
+    <!-- Dashboard (shown after login) -->
+    <div id="adminDashboard" style="display:none;">
+      <div class="admin-header">
+        <h2>Orders</h2>
+        <button class="btn-logout" onclick="adminLogout()">Logout</button>
+      </div>
+
+      <!-- Orders List -->
+      <div class="orders-list" id="ordersList">
+        <!-- Orders rendered here -->
+      </div>
+
+      <!-- Chat View (shown when order clicked) -->
+      <div id="adminChatView" style="display:none;">
+        <button class="admin-chat-back" onclick="backToOrders()">← Back to Orders</button>
+        <div class="chat-header">
+          <h2 id="adminChatTitle">Chat</h2>
+        </div>
+        <div class="chat-messages" id="adminChatMessages"></div>
+        <div class="chat-input-area">
+          <input type="text" id="adminMessageInput" placeholder="Reply..."
+            onkeydown="if(event.key==='Enter') adminSendMessage()" />
+          <button onclick="adminSendMessage()">Send</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="js/admin.js"></script>
+</body>
+
+</html>

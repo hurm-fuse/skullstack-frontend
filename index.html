@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skull Stack | Premium Web Development Agency</title>
+  <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+  <meta name="description"
+    content="AETHEX builds modern, premium websites. Buy a service and chat directly with our team." />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <a href="index.html">
+        <img style="border-radius: 10px; margin-bottom: -10px; margin-top: 3px; width: 50px;" src="logo.png" alt="">
+      </a>
+    </div>
+    <div class="nav-links">
+      <a href="orders.html">My Orders</a>
+      <a href="admin.html">Admin</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>We Build Modern Websites</h1>
+    <p>Skull Stack creates fast, clean, and professional websites for your business.</p>
+  </section>
+
+  <!-- Services -->
+  <section class="services-section" id="services">
+    <h2>Our Services</h2>
+    <div class="services-grid">
+
+      <!-- Service 1 -->
+      <div class="service-card">
+        <h3>Static Website</h3>
+        <p class="description">A clean, fast, and responsive static website perfect for personal or informational use.
+        </p>
+        <div class="price">$50</div>
+        <button class="btn-buy" onclick="openBuyModal('Static Website', 50)">Buy Now</button>
+      </div>
+
+      <!-- Service 2 -->
+      <div class="service-card">
+        <h3>Business Website</h3>
+        <p class="description">Professional multi-page website with contact forms, SEO, and modern design for your
+          business.</p>
+        <div class="price">₹100</div>
+        <button class="btn-buy" onclick="openBuyModal('Business Website', 100)">Buy Now</button>
+      </div>
+
+      <!-- Service 3 -->
+      <div class="service-card">
+        <h3>E-commerce Website</h3>
+        <p class="description">Full-featured online store with product management, cart, checkout, and payment
+          integration.</p>
+        <div class="price">$500</div>
+        <button class="btn-buy" onclick="openBuyModal('E-commerce Website', 500)">Buy Now</button>
+      </div>
+
+      <!-- Service 4 -->
+      <div class="service-card">
+        <h3>Portfolio Website</h3>
+        <p class="description">Showcase your work beautifully with a custom-designed portfolio site that stands out.</p>
+        <div class="price">$50</div>
+        <button class="btn-buy" onclick="openBuyModal('Portfolio Website', 50)">Buy Now</button>
+      </div>
+
+      <!-- Service 5 -->
+      <div class="service-card">
+        <h3>Custom Web Application</h3>
+        <p class="description">Tailor-made web application built from scratch to meet your unique business requirements.
+        </p>
+        <div class="price">$1000</div>
+        <button class="btn-buy" onclick="openBuyModal('Custom Web Application', 1000)">Buy Now</button>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="reviews-section" id="reviews">
+    <h2>Client Reviews</h2>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <p class="review-text">"Skull Stack transformed our outdated site into a high-converting machine. The process
+          was seamless!"</p>
+        <h4>— James Anderson</h4>
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+      </div>
+
+      <div class="review-card">
+        <p class="review-text">"Fast, professional, and very easy to communicate with. They delivered my portfolio in
+          record time."</p>
+        <h4>— Sarah Jenkins</h4>
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+      </div>
+
+      <div class="review-card">
+        <p class="review-text">"The e-commerce solution they built is robust and user-friendly. Highly recommend their
+          custom work."</p>
+        <h4>— Michael Chen</h4>
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+      </div>
+
+      <div class="review-card">
+        <p class="review-text">"The custom web app they built for my firm is flawless. The automation saved us hours of
+          work every week."</p>
+        <h4>— David Miller</h4>
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+      </div>
+
+      <div class="review-card">
+        <p class="review-text">"Incredible eye for detail. They didn't just build a site; they built a brand identity.
+          Best investment of the year."</p>
+        <h4>— Elena Rodriguez</h4>
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+      </div>
+
+      <div class="review-card">
+        <p class="review-text">"Support is top-notch. Even after the site went live, the team was there to help with
+          minor tweaks. Truly professional."</p>
+        <h4>— Marcus Thorne</h4>
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-section" id="contact">
+    <h2>Contact Us</h2>
+    <div class="contact-container">
+      <div class="contact-info">
+        <h3>Let's Talk</h3>
+        <p>Have a project in mind? Reach out and let's build something great together.</p>
+        <div class="info-item">
+          <strong>Email:</strong>
+          <span>byteburial@gmail.com</span>
+        </div>
+        <div class="info-item">
+          <strong>Phone:</strong>
+          <span>+91 8595507101</span>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <form action="#">
+          <input type="text" placeholder="Full Name" required>
+          <input type="email" placeholder="Email Address" required>
+          <textarea placeholder="Your Message" rows="5" required></textarea>
+          <button type="submit" class="btn-buy">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <div class="service-card" id="offer">
+    <h1>Portfolio Website for Only $0 🎉</h1>
+    <button class="btn-buy" style="margin-top: 25px;" onclick="openBuyModal('Portfolio Website', 0)">
+      Claim Your Offer
+    </button>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    &copy; 2025 AETHEX. All rights reserved.
+  </footer>
+
+  <!-- Customer Info Modal -->
+  <div class="modal-overlay" id="buyModal">
+    <div class="modal-box">
+      <h3>Enter Your Details</h3>
+      <input type="text" id="customerName" placeholder="Your Name" />
+      <input type="email" id="customerEmail" placeholder="Your Email" />
+      <button class="btn-modal" onclick="initiatePayment()">Proceed to Pay</button>
+    </div>
+  </div>
+
+
+  <!-- Razorpay Checkout Script -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
