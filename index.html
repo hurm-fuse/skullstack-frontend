@@ -4,60 +4,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Primary SEO -->
-  <title>Skull Stack | Professional Web Development Agency</title>
-  <meta name="google-site-verification" content="shQyQlCkETFhygjZ-Qx2uEJcpBnkClD9BLxYXk6Emv0" />
+  <title>Skull Stack | Web Development Agency</title>
+  <link rel="shortcut icon" href="logo.png" type="image/x-icon">
   <meta name="description"
-    content="Skull Stack is a professional web development agency offering business websites, e-commerce stores, portfolio websites, and custom web applications. Fast, modern and affordable website development services in India." />
-
-  <meta name="keywords"
-    content="Web Development Agency, Website Development Services, Business Website Development India, E-commerce Website Developer India, Portfolio Website Design, Custom Web Application Development, Affordable Website Design" />
-
-  <meta name="author" content="Skull Stack" />
-  <meta name="robots" content="index, follow" />
-
-  <!-- Canonical -->
-  <link rel="canonical" href="https://skullstackweb.vercel.app/" />
-
-  <!-- Open Graph (Facebook + LinkedIn) -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Skull Stack – Professional Web Development Agency" />
-  <meta property="og:description"
-    content="We build fast, modern, and scalable websites for businesses and startups." />
-  <meta property="og:url" content="https://skullstackweb.vercel.app/" />
-  <meta property="og:image" content="https://skullstackweb.vercel.app/logo.png" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Skull Stack – Web Development Agency" />
-  <meta name="twitter:description"
-    content="Business websites, e-commerce stores, and custom web applications built professionally." />
-  <meta name="twitter:image" content="https://skullstackweb.vercel.app/logo.png" />
-
-  <!-- Geo Targeting -->
-  <meta name="geo.region" content="IN" />
-  <meta name="geo.placename" content="India" />
-
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="logo.png" type="image/x-icon" />
-
-  <!-- Styles -->
+    content="AETHEX builds modern, premium websites. Buy a service and chat directly with our team." />
   <link rel="stylesheet" href="css/style.css" />
-
-  <!-- Structured Data (Schema Markup) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Skull Stack",
-    "url": "https://skullstackweb.vercel.app/",
-    "logo": "https://skullstackweb.vercel.app/logo.png",
-    "description": "Professional web development agency offering business websites, e-commerce stores, and custom web applications.",
-    "areaServed": "India"
-  }
-  </script>
-
 </head>
 
 <body>
@@ -66,7 +17,7 @@
   <nav class="navbar">
     <div class="logo">
       <a href="index.html">
-        <img style="border-radius: 10px; margin-bottom: -10px; margin-top: 3px; width: 50px;" src="logo.png" alt="Skull Stack Web Development Agency Logo">
+        <img style="border-radius: 10px; margin-bottom: -10px; margin-top: 3px; width: 50px;" src="logo.png" alt="">
       </a>
     </div>
     <div class="nav-links">
@@ -180,42 +131,6 @@
     </div>
   </section>
 
-  <section class="seo-section">
-  <h2>Professional Web Development Services</h2>
-
-  <p>
-    Skull Stack is a modern web development agency delivering fast,
-    secure, and SEO-optimized websites for businesses, startups,
-    and individuals worldwide. We specialize in static websites,
-    business websites, portfolio sites, e-commerce platforms,
-    and fully custom web applications.
-  </p>
-
-  <p>
-    Our mission is to build high-performance digital experiences
-    that not only look professional but also rank on search engines
-    and convert visitors into loyal customers.
-  </p>
-
-  <h3>Our Website Development Expertise</h3>
-  <p>
-    We design responsive websites that work flawlessly on mobile,
-    tablet, and desktop devices. Every project is built with clean,
-    scalable code, optimized loading speed, and a strong SEO
-    foundation to help your brand grow online.
-  </p>
-
-  <h3>Why Choose Skull Stack?</h3>
-  <ul>
-    <li>Fast loading and optimized performance</li>
-    <li>Fully mobile responsive design</li>
-    <li>SEO-ready website structure</li>
-    <li>Secure payment integration</li>
-    <li>Transparent and affordable pricing</li>
-    <li>Ongoing support and maintenance</li>
-  </ul>
-</section>
-
   <section class="contact-section" id="contact">
     <h2>Contact Us</h2>
     <div class="contact-container">
@@ -233,44 +148,13 @@
       </div>
 
       <div class="contact-form">
-  <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
-    <input type="hidden" name="access_key" value="7a984b0f-abed-447d-bca5-fbe82892106e">
-    <input type="hidden" name="redirect" value="thankyou.html">
-    <input type="hidden" name="subject" value="Mere Pyare Client">
-
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-    <textarea name="message" placeholder="Your Message" required></textarea>
-
-    <button class="btn-buy" type="submit">Submit</button>
-  </form>
+        <form action="#">
+          <input type="text" placeholder="Full Name" required>
+          <input type="email" placeholder="Email Address" required>
+          <textarea placeholder="Your Message" rows="5" required></textarea>
+          <button type="submit" class="btn-buy">Send Message</button>
+        </form>
       </div>
-
-<script>
-  const formsubmit = document.getElementById('contactForm');
-
-  formsubmit.addEventListener('submit', async function(e) {
-    e.preventDefault(); // prevent default form submit
-    const formData = new FormData(formsubmit); // ✅ fixed
-
-    try {
-      const response = await fetch(formsubmit.action, {
-        method: 'POST',
-        body: formData
-      });
-
-      const result = await response.json();
-      if (result.success) {
-        window.location.href = "thankyou.html"; // ✅ reliable redirect
-      } else {
-        alert("Error sending form. Try again!");
-      }
-    } catch (err) {
-      console.error(err);
-      alert("Error sending form. Try again!");
-    }
-  });
-</script>
     </div>
   </section>
 
@@ -283,7 +167,7 @@
 
   <!-- Footer -->
   <footer class="footer">
-    &copy; 2025 Skull Stack. All rights reserved.
+    &copy; 2025 AETHEX. All rights reserved.
   </footer>
 
   <!-- Customer Info Modal -->
@@ -300,24 +184,6 @@
   <!-- Razorpay Checkout Script -->
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
   <script src="js/main.js"></script>
-
-  <script>
-const form = document.querySelector("form");
-
-form.addEventListener("submit", function(e) {
-    const name = form.querySelector('input[name="Name"]').value;
-    localStorage.setItem("customerName", name);
-
-    // Let the form submit after saving the name
-    // Use setTimeout 50ms to ensure localStorage is saved
-    setTimeout(() => {
-        form.submit();
-    }, 50);
-
-    // Prevent immediate default submission
-    e.preventDefault();
-});
-</script>
 </body>
 
 </html>
