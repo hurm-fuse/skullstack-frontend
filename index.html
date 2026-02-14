@@ -233,12 +233,26 @@
       </div>
 
       <div class="contact-form">
-        <form action="https://formsubmit.co/byteburial@gmail.com">
-          <input type="text" placeholder="Full Name" required>
-          <input type="email" placeholder="Email Address" required>
-          <textarea placeholder="Your Message" rows="5" required></textarea>
-          <button type="submit" class="btn-buy">Send Message</button>
-        </form>
+<form action="https://formsubmit.co/byteburial@gmail.com" method="POST">
+
+  <!-- Disable captcha (optional) -->
+  <input type="hidden" name="_captcha" value="false">
+
+  <!-- Custom subject -->
+  <input type="hidden" name="_subject" value="New International Client Lead!">
+
+  <!-- Redirect after submit -->
+  <input type="hidden" name="_next" value="https://skullstackweb.vercel.app/thankyou.html">
+
+  <input type="text" name="name" placeholder="Full Name" required>
+
+  <input type="email" name="email" placeholder="Email Address" required>
+
+  <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+
+  <button type="submit" class="btn-buy">Send Message</button>
+
+</form>
       </div>
     </div>
   </section>
