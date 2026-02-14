@@ -290,11 +290,21 @@ https://skullstackweb.vercel.app">
   <script src="js/main.js"></script>
 
   <script>
-  const form = document.querySelector("form");
-  form.addEventListener("submit", () => {
+const form = document.querySelector("form");
+
+form.addEventListener("submit", function(e) {
     const name = form.querySelector('input[name="Name"]').value;
     localStorage.setItem("customerName", name);
-  });
+
+    // Let the form submit after saving the name
+    // Use setTimeout 50ms to ensure localStorage is saved
+    setTimeout(() => {
+        form.submit();
+    }, 50);
+
+    // Prevent immediate default submission
+    e.preventDefault();
+});
 </script>
 </body>
 
