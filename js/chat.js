@@ -52,7 +52,7 @@ function renderMessages(messages) {
     const time = new Date(msg.createdAt).toLocaleString();
     bubble.innerHTML = `
       <div>${escapeHtml(msg.message)}</div>
-      <div class="message-meta">${msg.sender === 'admin' ? 'AETHEX Team' : 'You'} · ${time}</div>
+      <div class="message-meta">${msg.sender === 'admin' ? 'Skull Stack Team' : 'You'} · ${time}</div>
     `;
 
     container.appendChild(bubble);
