@@ -27,7 +27,12 @@ body {
 </head>
 
 <body>
-<h1>🎉 Thank You! <span id="userName"></span></h1>
+<div class="hero">
+    <h1>🎉 Thank You! <span id="userName"></span></h1>
+    <p style="font-size:18px; color:#ccc; margin-top:15px;">
+  We’ll reply to you as soon as possible! ⏱️
+</p>
+</div>
 <script>
   const name = localStorage.getItem("customerName") || "Guest";
   document.getElementById("userName").textContent = name;
