@@ -1,138 +1,130 @@
-/**
- * js/chat.js - Skull Stack Support Chat
- * Features: 3-second polling, flicker prevention, auto-scroll, and XSS protection.
- */
+const API = 'https://skullstack-backend.onrender.com/api';
+let currentOrderId = null;
+let pollInterval = null;
 
-const API_BASE = 'https://skullstack.onrender.com/api';
+function getToken() {
+  return localStorage.getItem('token');
+}
 
-// 1. SESSION & ROUTING CHECK
-const params = new URLSearchParams(window.location.search);
-const orderId = params.get('orderId');
-const token = localStorage.getItem('aethex_token');
+function getUser() {
+  const u = localStorage.getItem('user');
+  return u ? JSON.parse(u) : null;
+}
 
-if (!orderId || !token) {
-  alert('Invalid access. No order or session found.');
+function logout() {
+  localStorage.removeItem('token');
+  localStorage.removeItem('user');
   window.location.href = 'index.html';
 }
 
-// Display shortened Order ID for cleaner UI
-document.getElementById('chatOrderInfo').textContent = `Order: ${orderId.substring(0, 12)}...`;
+// Check auth
+(function init() {
+  const token = getToken();
+  const user = getUser();
+  if (!token || !user || user.role === 'admin') {
+    window.location.href = 'login.html';
+    return;
+  }
 
-// State management to prevent UI flickering during polling
-let lastMessageCount = 0;
+  const params = new URLSearchParams(window.location.search);
+  const orderId = params.get('orderId');
 
-/**
- * Fetch messages from the server
- */
-async function fetchMessages() {
+  if (orderId) {
+    openChat(orderId);
+  } else {
+    window.location.href = 'orders.html';
+  }
+})();
+
+async function loadOrders() {
+  document.querySelector('.chat-section').style.display = 'none';
+  document.getElementById('ordersList').style.display = 'block';
+
   try {
-    const res = await fetch(`${API_BASE}/chat/${orderId}`, {
-      headers: { 'Authorization': `Bearer ${token}` }
+    const res = await fetch(API + '/payment/my-orders', {
+      headers: { 'Authorization': 'Bearer ' + getToken() }
     });
+    const orders = await res.json();
+    const container = document.getElementById('ordersContainer');
 
-    if (res.status === 401 || res.status === 403) {
-      alert('Session expired. Please log in again.');
-      window.location.href = 'index.html';
+    if (orders.length === 0) {
+      container.innerHTML = '<p style="color:#666; padding:20px;">No orders yet. <a href="index.html#services" style="text-decoration:underline;font-weight:bold;">Browse services</a></p>';
       return;
     }
 
-    const messages = await res.json();
-    
-    // Only re-render if the number of messages has changed
-    if (messages.length !== lastMessageCount) {
-      renderMessages(messages);
-      lastMessageCount = messages.length;
-    }
+    container.innerHTML = orders.map(o => `
+      <div class="order-card" onclick="openChat('${o._id}')">
+        <div class="order-info">
+          <h4>${o.serviceName}</h4>
+          <p>${new Date(o.createdAt).toLocaleDateString()}</p>
+        </div>
+        <div class="order-amount">$${o.amount}</div>
+      </div>
+    `).join('');
   } catch (err) {
-    console.error('Error fetching messages:', err);
+    console.error('Failed to load orders');
   }
 }
 
-/**
- * Render messages into the chat container
- */
-function renderMessages(messages) {
-  const container = document.getElementById('chatMessages');
-  
-  // Flicker prevention: Only re-render if count changes
-  if (messages.length === lastMessageCount) return;
-  lastMessageCount = messages.length;
+function openChat(orderId) {
+  currentOrderId = orderId;
+  document.querySelector('.chat-section').style.display = 'flex';
+  document.getElementById('ordersList').style.display = 'none';
+  document.getElementById('chatTitle').textContent = 'Order Chat';
+  document.getElementById('chatSubtitle').textContent = 'Order: ' + orderId;
 
-  container.innerHTML = '';
-
-  messages.forEach(msg => {
-    const bubble = document.createElement('div');
-    
-    // Assign 'user' or 'admin' class based on the sender
-    const isMe = msg.sender !== 'admin';
-    bubble.className = `message-bubble ${isMe ? 'user' : 'admin'}`;
-
-    const time = new Date(msg.createdAt).toLocaleTimeString([], { 
-      hour: '2-digit', 
-      minute: '2-digit' 
-    });
-
-    bubble.innerHTML = `
-      <div class="message-content">${escapeHtml(msg.message)}</div>
-      <div class="message-meta">
-        ${isMe ? 'You' : 'Skull Stack Support'} • ${time}
-      </div>
-    `;
-
-    container.appendChild(bubble);
-  });
-
-  container.scrollTop = container.scrollHeight;
+  loadMessages();
+  if (pollInterval) clearInterval(pollInterval);
+  pollInterval = setInterval(loadMessages, 3000);
 }
 
-/**
- * Send a new message to the server
- */
+async function loadMessages() {
+  if (!currentOrderId) return;
+  try {
+    const res = await fetch(API + '/chat/' + currentOrderId, {
+      headers: { 'Authorization': 'Bearer ' + getToken() }
+    });
+    const messages = await res.json();
+    const container = document.getElementById('chatMessages');
+    
+    container.innerHTML = messages.map(m => `
+      <div class="chat-bubble ${m.sender}">
+        <div class="sender">${m.sender === 'client' ? 'You' : 'Admin'}</div>
+        ${escapeHtml(m.message)}
+        <div class="time">${new Date(m.createdAt).toLocaleTimeString()}</div>
+      </div>
+    `).join('');
+
+    container.scrollTop = container.scrollHeight;
+  } catch (err) {
+    console.error('Failed to load messages');
+  }
+}
+
 async function sendMessage() {
   const input = document.getElementById('messageInput');
   const message = input.value.trim();
-  
-  if (!message) return;
+  if (!message || !currentOrderId) return;
 
-  // Visual feedback: clear input immediately
   input.value = '';
-  input.placeholder = "Sending...";
 
   try {
-    const res = await fetch(`${API_BASE}/chat/${orderId}`, {
+    await fetch(API + '/chat/' + currentOrderId, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
+        'Authorization': 'Bearer ' + getToken()
       },
       body: JSON.stringify({ message })
     });
-
-    if (res.ok) {
-      input.placeholder = "Type a message...";
-      fetchMessages(); // Refresh immediately after sending
-    } else {
-      const data = await res.json();
-      alert(data.message || 'Error sending message');
-      input.placeholder = "Error occurred. Try again.";
-    }
+    loadMessages();
   } catch (err) {
-    console.error('Error sending message:', err);
-    input.placeholder = "Network error.";
+    console.error('Failed to send message');
   }
 }
 
-/**
- * Security: Escape HTML to prevent XSS attacks
- */
 function escapeHtml(text) {
   const div = document.createElement('div');
-  div.appendChild(document.createTextNode(text));
+  div.textContent = text;
   return div.innerHTML;
 }
-
-// Initial Load
-fetchMessages();
-
-// Set Polling: Check for new messages every 3 seconds
-setInterval(fetchMessages, 3000);

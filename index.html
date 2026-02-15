@@ -2,245 +2,170 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Skull Stack | Web Development Agency</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skull Stack - Web Development Agency</title>
+  <link rel="stylesheet" href="css/style.css">
   <link rel="shortcut icon" href="logo.png" type="image/x-icon">
-  <meta name="description"
-    content="AETHEX builds modern, premium websites. Buy a service and chat directly with our team." />
-  <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
 
-  <!-- Navbar -->
-   <nav class="navbar">
+  <!-- NAVBAR -->
+  <nav class="navbar">
     <div class="nav-container">
-        <div class="logo">
-            <a href="index.html">
-                <img src="logo.png" style="width: 50px; border-radius: 10px; margin-top: 5px;" alt="Logo">
-            </a>
-        </div>
-        <div class="nav-links">
-            <a href="orders.html">My Orders</a>
-            <a href="admin.html">Admin</a>
-            <a href="login.html" id="navLoginBtn" class="btn-login">Login</a>
-        </div>
+      <a href="index.html" class="logo">
+        <img style="width: 50px; margin-top: 10px; border-radius: 10px;" src="logo.png" alt="">
+      </a>
+      <div class="nav-links">
+        <a href="login.html">Login</a>
+      </div>
     </div>
-</nav>
+  </nav>
 
+  <!-- HERO -->
   <div class="container">
-    <div id="offer">
-        <h1>Portfolio Website for Only $0 🎉</h1>
-        <button class="btn-buy" onclick="openBuyModal('Portfolio Website', 0)">
-            Claim Your Offer
-        </button>
-    </div>
-
-    <!-- Hero -->
     <section class="hero">
-        <h1>We Build Modern Websites</h1>
-        <p>Skull Stack creates fast, clean, and professional websites for your business.</p>
+      <h1>Build Your Digital Empire</h1>
+      <p>Premium web development services crafted for businesses that demand excellence. Let us transform your vision
+        into a powerful online presence.</p>
     </section>
 
-    <!-- Services -->
+    <!-- SPECIAL OFFER -->
+    <section id="offer">
+      <p class="tag">Offer</p>
+      <h1>Free One Page Portfolio Website</h1>
+      <button class="btn-pay" onclick="buyService('Free Portfolio Website', 0)">Buy Now</button>
+    </section>
+
+    <!-- SERVICES -->
     <section class="services-section" id="services">
-        <h1>Our Services</h1>
-        <div class="services-grid">
+      <h1>Our Services</h1>
+      <p>Choose the perfect plan for your business needs</p>
 
-            <div class="service-card">
-                <h3>🥉 Starter</h3>
-                <p class="description">Perfect for startups & small businesses</p>
-                <div class="feature">
-                    <p>1–3 Pages Website</p>
-<p>Fully Mobile Responsive</p>
-<p>Contact Form Integration</p>
-<p>Basic SEO Setup</p>
-<p>1 Day Delivery</p>
-                </div>
-                <div class="price">$49</div>
-                <button class="btn-buy" onclick="openBuyModal('Starter Website', 49)">Buy Now</button>
-            </div>
+      <div class="services-grid">
 
-            <div class="service-card popular">
-                <span class="popular-badge">Most Popular</span>
-                <h3>🥈 Growth</h3>
-                <p class="description">Best for businesses that want consistent leads</p>
-
-                <div class="feature">
-                    <p>Up to 5 Pages Website</p>
-<p>Modern Premium Design</p>
-<p>Contact & Lead Capture Forms</p>
-<p>On-Page SEO Optimization</p>
-<p>WhatsApp Chat Integration</p>
-<p>2 Days Delivery</p>
-<p>2 Free Revisions</p>
-                </div>
-
-                <div class="price">$99</div>
-
-                <button class="btn-buy" onclick="openBuyModal('Business Website', 99)">
-                    Start My Project
-                </button>
-            </div>
-
-            <div class="service-card">
-                <h3>🥇 Pro</h3>
-                <p class="description">For serious businesses ready to scale</p>
-
-                <div class="feature">
-                    <p>Up to 10 Pages Website</p>
-<p>Custom UI/UX Design</p>
-<p>Advanced SEO Setup</p>
-<p>Blog Setup</p>
-<p>Speed Optimization</p>
-<p>Payment Gateway Integration</p>
-<p>Admin Panel (If Required)</p>
-<p>3 Days Delivery</p>
-<p>5 Free Revisions</p>
-<p>30 Days Free Support</p>
-                </div>
-
-                <div class="price">$499</div>
-
-                <button class="btn-buy" onclick="openBuyModal('Custom Web Application', 499)">
-                    Start My Project
-                </button>
-            </div>
-
+        <!-- Starter -->
+        <div class="service-card">
+          <h3>Starter</h3>
+          <p class="description">Perfect for startups & small businesses</p>
+          <div class="feature">
+            <p>Responsive Landing Page</p>
+            <p>Mobile Optimized</p>
+            <p>Contact Form Integration</p>
+            <p>SEO Basics</p>
+            <p>1 Revision Round</p>
+          </div>
+          <div class="price">$49</div>
+          <button class="btn-buy" onclick="buyService('Starter Website', 49)">Buy Now</button>
         </div>
+
+        <!-- Growth -->
+        <div class="service-card popular">
+          <div class="popular-badge">Most Popular</div>
+          <h3>Growth</h3>
+          <p class="description">Best for businesses that want consistent leads</p>
+          <div class="feature">
+            <p>Multi-Page Website (up to 5)</p>
+            <p>Custom Design</p>
+            <p>SEO Optimization</p>
+            <p>Analytics Integration</p>
+            <p>3 Revision Rounds</p>
+          </div>
+          <div class="price">$99</div>
+          <button class="btn-buy" onclick="buyService('Growth Website', 99)">Buy Now</button>
+        </div>
+
+        <!-- Pro (Popular) -->
+        <div class="service-card">
+          <h3>Business Website</h3>
+          <p class="description">For serious businesses ready to scale</p>
+          <div class="feature">
+            <p>Full Custom Website</p>
+            <p>E-commerce Integration</p>
+            <p>Advanced SEO & Analytics</p>
+            <p>Performance Optimization</p>
+            <p>Priority Support</p>
+            <p>Unlimited Revisions</p>
+          </div>
+          <div class="price">$499</div>
+          <button class="btn-buy" onclick="buyService('Business Website', 499)">Buy Now</button>
+        </div>
+
+      </div>
     </section>
 
+    <!-- REVIEWS -->
     <section class="reviews-section" id="reviews">
-        <h1>Client Reviews</h1>
-        <div class="reviews-grid">
-            <div class="review-card">
-                <p class="review-text">"Skull Stack transformed our outdated site into a high-converting machine. The
-                    process
-                    was seamless!"</p>
-                <h4>— James Anderson</h4>
-                <div class="stars">⭐⭐⭐⭐⭐</div>
-            </div>
+      <h1>What Our Clients Say</h1>
 
-            <div class="review-card">
-                <p class="review-text">"Fast, professional, and very easy to communicate with. They delivered my
-                    portfolio
-                    in
-                    record time."</p>
-                <h4>— Sarah Jenkins</h4>
-                <div class="stars">⭐⭐⭐⭐⭐</div>
-            </div>
-
-            <div class="review-card">
-                <p class="review-text">"The e-commerce solution they built is robust and user-friendly. Highly recommend
-                    their
-                    custom work."</p>
-                <h4>— Michael Chen</h4>
-                <div class="stars">⭐⭐⭐⭐⭐</div>
-            </div>
-
-            <div class="review-card">
-                <p class="review-text">"The custom web app they built for my firm is flawless. The automation saved us
-                    hours
-                    of
-                    work every week."</p>
-                <h4>— David Miller</h4>
-                <div class="stars">⭐⭐⭐⭐⭐</div>
-            </div>
-
-            <div class="review-card">
-                <p class="review-text">"Incredible eye for detail. They didn't just build a site; they built a brand
-                    identity.
-                    Best investment of the year."</p>
-                <h4>— Elena Rodriguez</h4>
-                <div class="stars">⭐⭐⭐⭐⭐</div>
-            </div>
-
-            <div class="review-card">
-                <p class="review-text">"Support is top-notch. Even after the site went live, the team was there to help
-                    with
-                    minor tweaks. Truly professional."</p>
-                <h4>— Marcus Thorne</h4>
-                <div class="stars">⭐⭐⭐⭐⭐</div>
-            </div>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <p class="review-text">"Skull Stack delivered beyond our expectations. Our new website has increased our leads
+            by 300%. Highly recommend their services!"</p>
+          <strong>- Sarah Johnson</strong>
+          <div class="stars">★★★★★</div>
         </div>
+        <div class="review-card">
+          <p class="review-text">"Professional, fast, and incredibly talented team. They understood our vision perfectly
+            and brought it to life."</p>
+          <strong>- Michael Chen</strong>
+          <div class="stars">★★★★★</div>
+        </div>
+        <div class="review-card">
+          <p class="review-text">"The best investment we made for our business. The website they built is stunning and
+            performs flawlessly."</p>
+          <strong>- Emily Davis</strong>
+          <div class="stars">★★★★★</div>
+        </div>
+      </div>
     </section>
 
+    <!-- CONTACT -->
     <section class="contact-section" id="contact">
-        <h1>Let's Talk</h1>
-        <div class="contact-container">
-            <div class="contact-info">
-                <p>Have a project in mind? Reach out and let's build something great together.</p>
-                <div class="info-item">
-                    <strong>Email:</strong>
-                    <span>byteburial@gmail.com</span>
-                </div>
-                <div class="info-item">
-                    <strong>Phone:</strong>
-                    <span>+91 8595507101</span>
-                </div>
-            </div>
-
-            <div class="contact-form">
-                <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
-                    <input type="hidden" name="access_key" value="7a984b0f-abed-447d-bca5-fbe82892106e">
-                    <input type="hidden" name="redirect" value="thankyou.html">
-                    <input type="hidden" name="subject" value="Mere Pyare Client">
-
-                    <input type="text" name="name" placeholder="Your Name" required>
-                    <input type="email" name="email" placeholder="Your Email" required>
-                    <textarea name="message" placeholder="Your Message" required></textarea>
-
-                    <button class="btn-buy" type="submit">Submit</button>
-                </form>
-            </div>
-
-            <script>
-                const formsubmit = document.getElementById('contactForm');
-
-                formsubmit.addEventListener('submit', async function (e) {
-                    e.preventDefault(); // prevent default form submit
-                    const formData = new FormData(formsubmit);
-
-                    try {
-                        const response = await fetch(formsubmit.action, {
-                            method: 'POST',
-                            body: formData
-                        });
-
-                        const result = await response.json();
-                        if (result.success) {
-                            window.location.href = "thankyou.html"; // ✅ redirect
-                        } else {
-                            alert("Error sending form. Try again!");
-                        }
-                    } catch (err) {
-                        console.error(err);
-                        alert("Error sending form. Try again!");
-                    }
-                });
-            </script>
+      <h1>Get In Touch</h1>
+      <div class="contact-container">
+        <div class="contact-info">
+          <div class="info-item">
+            <strong>Email</strong>
+            <p>hello@skullstack.com</p>
+          </div>
+          <div class="info-item">
+            <strong>Phone</strong>
+            <p>+1 (555) 123-4567</p>
+          </div>
+          <div class="info-item">
+            <strong>Location</strong>
+            <p>San Francisco, CA</p>
+          </div>
         </div>
+        <form action="https://formsubmit.co/byteburial@gmail.com" method="POST" class="contact-form">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_subject" value="New Client">
+  <input type="text" name="name" placeholder="Your Name" required>
+  <input type="email" name="email" placeholder="Your Email" required>
+  <textarea name="message" placeholder="Your Message" required></textarea>
+  <button class="btn-buy" type="submit">Send Message</button>
+</form>
+      </div>
     </section>
-</div>
+  </div>
 
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer class="footer">
-    &copy; 2025 AETHEX. All rights reserved.
+    <p>&copy; 2026 Skull Stack. All rights reserved.</p>
   </footer>
 
-  <!-- Customer Info Modal -->
-  <div class="modal-overlay" id="buyModal">
+  <!-- MODAL -->
+  <div class="modal-overlay" id="paymentModal">
     <div class="modal-box">
-      <h3>Enter Your Details</h3>
-      <input type="text" id="customerName" placeholder="Your Name" />
-      <input type="email" id="customerEmail" placeholder="Your Email" />
-      <button class="btn-buy" onclick="initiatePayment()">Proceed to Pay</button>
+      <h3 id="modalTitle">Processing Payment</h3>
+      <p id="modalMessage">Please wait while we set up your payment...</p>
+      <button class="btn-buy" id="modalClose" onclick="closeModal()"
+        style="margin-top:20px; display:none;">Close</button>
     </div>
   </div>
 
-
-  <!-- Razorpay Checkout Script -->
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
   <script src="js/main.js"></script>
 </body>

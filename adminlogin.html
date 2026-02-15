@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login - Skull Stack</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <img style="width: 50px; margin-top: 10px; border-radius: 10px;" src="logo.png" alt="">
+      </a>
+      <div class="nav-links">
+        <a href="login.html">Client Login</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="auth-section">
+      <div class="auth-box">
+        <h1>Admin Login</h1>
+        <p class="auth-subtitle">Access the admin dashboard.</p>
+        <form id="adminLoginForm">
+          <input type="email" id="email" placeholder="Admin Email" required>
+          <input type="password" id="password" placeholder="Admin Password" required>
+          <button class="btn-buy" type="submit">Login as Admin</button>
+        </form>
+        <div id="errorMsg" class="error-msg"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const API = window.location.origin + '/api';
+
+    document.getElementById('adminLoginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const errorMsg = document.getElementById('errorMsg');
+      errorMsg.textContent = '';
+
+      try {
+        const res = await fetch(API + '/auth/admin/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password })
+        });
+        const data = await res.json();
+        if (!res.ok) {
+          errorMsg.textContent = data.error || 'Login failed';
+          return;
+        }
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('user', JSON.stringify(data.user));
+        window.location.href = 'admin.html';
+      } catch (err) {
+        errorMsg.textContent = 'Network error';
+      }
+    });
+  </script>
+</body>
+
+</html>

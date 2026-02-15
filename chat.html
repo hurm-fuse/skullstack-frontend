@@ -2,142 +2,45 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Skull Stack | Chat</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat - Skull Stack</title>
+  <link rel="stylesheet" href="css/style.css">
   <link rel="shortcut icon" href="logo.png" type="image/x-icon">
-  <style>
-    /* Reset and Base */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-body {
-  background: #273EA5; /* Deep Blue */
-  font-family: 'Inter', system-ui, sans-serif;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-}
-
-/* Chat Container */
-.chat-container {
-  width: 100%;
-  max-width: 500px;
-  height: 85vh;
-  background: #586CC3; /* Lighter Blue */
-  display: flex;
-  flex-direction: column;
-  border: 4px solid #D6DDFF;
-}
-
-/* Header */
-.chat-header {
-  padding: 20px;
-  background: #1e318a;
-  border-bottom: 2px solid #D6DDFF;
-}
-.chat-header h2 { font-size: 1.1rem; color: #fff; text-transform: uppercase; letter-spacing: 1px; }
-.chat-header p { font-size: 0.7rem; color: #D6DDFF; font-family: monospace; margin-top: 5px; }
-
-/* Messages Area */
-.chat-messages {
-  flex: 1;
-  padding: 20px;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  background: #f4f7ff; /* High contrast background */
-}
-
-/* Scrollbar styling */
-.chat-messages::-webkit-scrollbar { width: 6px; }
-.chat-messages::-webkit-scrollbar-thumb { background: #273EA5; }
-
-/* Message Bubbles */
-.message-bubble {
-  max-width: 85%;
-  padding: 12px 16px;
-  font-size: 0.95rem;
-  line-height: 1.4;
-  position: relative;
-}
-
-/* User Messages (Right side) */
-.message-bubble.user {
-  align-self: flex-end;
-  background: #273EA5;
-  color: white;
-  border-left: 5px solid #D6DDFF;
-}
-
-/* Admin Messages (Left side) */
-.message-bubble.admin {
-  align-self: flex-start;
-  background: #D6DDFF;
-  color: #273EA5;
-  border-right: 5px solid #273EA5;
-}
-
-/* Metadata Styling */
-.message-meta {
-  display: block;
-  font-size: 0.65rem;
-  margin-top: 8px;
-  opacity: 0.8;
-  font-weight: bold;
-}
-
-/* Input Area */
-.chat-input-area {
-  padding: 15px;
-  background: #fff;
-  display: flex;
-  gap: 10px;
-  border-top: 4px solid #273EA5;
-}
-
-#messageInput {
-  flex: 1;
-  padding: 12px;
-  border: 2px solid #D6DDFF;
-  outline: none;
-  font-size: 1rem;
-}
-
-.chat-input-area button {
-  padding: 0 20px;
-  background: #273EA5;
-  color: white;
-  border: none;
-  font-weight: bold;
-  cursor: pointer;
-  text-transform: uppercase;
-}
-  </style>
 </head>
 
 <body>
 
-  <div class="chat-container">
-    <!-- Chat Header -->
-    <div class="chat-header">
-      <h2>Skull Stack Support</h2>
-      <p id="chatOrderInfo">Order: Loading...</p>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <img style="width: 50px; margin-top: 10px; border-radius: 10px;" src="logo.png" alt="">
+      </a>
+      <div class="nav-links">
+        <a href="orders.html">My Orders</a>
+        <a href="#" onclick="logout()">Logout</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="chat-section">
+      <div class="chat-header">
+        <h2 id="chatTitle">Order Chat</h2>
+        <p id="chatSubtitle">Discuss your project with our team</p>
+      </div>
+
+      <div class="chat-messages" id="chatMessages">
+        <!-- Messages loaded here -->
+      </div>
+
+      <div class="chat-input-area">
+        <input type="text" id="messageInput" placeholder="Type a message..."
+          onkeydown="if(event.key==='Enter')sendMessage()">
+        <button class="btn-buy chat-send-btn" onclick="sendMessage()">Send</button>
+      </div>
     </div>
 
-    <!-- Messages -->
-    <div class="chat-messages" id="chatMessages">
-      <!-- Messages will be rendered here -->
-    </div>
-
-    <!-- Input -->
-    <div class="chat-input-area">
-      <input type="text" id="messageInput" placeholder="Type a message..."
-        onkeydown="if(event.key==='Enter') sendMessage()" />
-      <button onclick="sendMessage()">Send</button>
-    </div>
   </div>
 
   <script src="js/chat.js"></script>
