@@ -6,20 +6,85 @@
   <title>Thank You</title>
   <link rel="shortcut icon" href="logo.png" type="image/x-icon">
   <meta name="description" content="Thank you for contacting Skull Stack. Our team will get back to you shortly.">
+  <style>
+    /* ================= RESET & BASE ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  <link rel="stylesheet" href="css/style.css">
+body {
+  background: #273EA5; /* Deep Blue */
+  font-family: system-ui, -apple-system, sans-serif;
+  color: white;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+/* ================= THANK YOU CONTAINER ================= */
+/* You can add class="thank-you-container" to your div */
+.thank-you-container, div:not([class*=" "]) { 
+  background: #586CC3; /* Lighter Blue */
+  padding: 60px 40px;
+  width: 100%;
+  max-width: 500px;
+  /* No border-radius */
+  /* No box-shadow */
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  letter-spacing: -1px;
+}
+
+p {
+  opacity: 0.9;
+  line-height: 1.5;
+}
+
+/* ================= BACK BUTTON (Recommended) ================= */
+/* In case you want to add a <a href="index.html" class="btn-home"> link */
+.btn-home {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 15px 30px;
+  background: #273EA5;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: background 0.3s;
+}
+
+.btn-home:hover {
+  background: #D6DDFF;
+  color: #273EA5;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2.2rem;
+  }
+  
+  .thank-you-container {
+    padding: 40px 20px;
+  }
+}
+  </style>
 </head>
 
 <body>
-<div class="hero">
-    <h1>🎉 Thank You! <span id="userName"></span></h1>
-    <p style="font-size:18px; color:#ccc; margin-top:15px;">
-  We’ll reply to you as soon as possible! ⏱️
-</p>
+<div class="thank-you-container">
+    <h1>🎉 Thank You!</h1>
+    <p>We’ll reply to you as soon as possible! ⏱️</p>
+    <a href="index.html" class="btn-home">Back to Home</a>
 </div>
-<script>
-  const name = localStorage.getItem("customerName") || "Guest";
-  document.getElementById("userName").textContent = name;
-</script>
 </body>
 </html>

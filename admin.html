@@ -6,7 +6,211 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Skull Stack | Admin Panel</title>
   <link rel="shortcut icon" href="logo.png" type="image/x-icon">
-  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ================= RESET & BASE ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #273EA5; /* Deep Blue */
+  font-family: system-ui, -apple-system, sans-serif;
+  color: white;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 20px;
+}
+
+/* ================= ADMIN CONTAINER ================= */
+.admin-container {
+  width: 100%;
+  max-width: 900px;
+  background: #586CC3; /* Lighter Blue */
+  padding: 40px;
+  /* Shadow Removed */
+}
+
+/* ================= LOGIN FORM ================= */
+.admin-login {
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.admin-login h2 {
+  margin-bottom: 25px;
+  font-size: 2rem;
+  letter-spacing: 1px;
+}
+
+.admin-login input {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 15px;
+  border: none;
+  background: #D6DDFF;
+  color: #273EA5;
+  font-size: 1rem;
+}
+
+.admin-login button {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  background: #273EA5;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: 0.3s;
+}
+
+.admin-login button:hover {
+  background: #1e318a;
+}
+
+/* ================= DASHBOARD HEADER ================= */
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  border-bottom: 2px solid rgba(255,255,255,0.1);
+  padding-bottom: 20px;
+}
+
+.btn-logout {
+  background: #ff4b4b;
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* ================= ORDERS LIST ================= */
+.orders-list {
+  display: grid;
+  gap: 15px;
+}
+
+.order-item {
+  background: #D6DDFF;
+  color: #273EA5;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.2s;
+  /* Shadow Removed */
+}
+
+.order-item:hover {
+  background: white;
+}
+
+.order-info h4 {
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+}
+
+.order-status {
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: #273EA5;
+  color: white;
+  padding: 4px 10px;
+}
+
+/* ================= CHAT VIEW ================= */
+.admin-chat-back {
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+  padding: 5px 12px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.chat-header {
+  margin-bottom: 15px;
+}
+
+.chat-messages {
+  background: white;
+  height: 400px;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.message {
+  max-width: 80%;
+  padding: 10px 15px;
+  font-size: 0.95rem;
+}
+
+.message.admin {
+  align-self: flex-end;
+  background: #586CC3;
+  color: white;
+}
+
+.message.user {
+  align-self: flex-start;
+  background: #eee;
+  color: #333;
+}
+
+.chat-input-area {
+  display: flex;
+  margin-top: 15px;
+}
+
+.chat-input-area input {
+  flex-grow: 1;
+  padding: 15px;
+  border: none;
+  background: #D6DDFF;
+  color: #273EA5;
+}
+
+.chat-input-area button {
+  padding: 0 25px;
+  border: none;
+  background: #273EA5;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 600px) {
+  .admin-container {
+    padding: 20px;
+  }
+  
+  .order-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
+  </style>
 </head>
 
 <body>

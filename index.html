@@ -14,22 +14,24 @@
 <body>
 
   <!-- Navbar -->
-  <nav class="navbar">
-    <div class="logo">
-      <a href="index.html">
-        <img style="width: 50px;" src="logo.png" alt="">
-      </a>
+   <nav class="navbar">
+    <div class="nav-container">
+        <div class="logo">
+            <a href="index.html">
+                <img src="logo.png" style="width: 50px; border-radius: 10px; margin-top: 5px;" alt="Logo">
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="orders.html">My Orders</a>
+            <a href="admin.html">Admin</a>
+        </div>
     </div>
-    <div class="nav-links">
-      <a href="orders.html">My Orders</a>
-      <a href="admin.html">Admin</a>
-    </div>
-  </nav>
+</nav>
 
   <div class="container">
     <div id="offer">
         <h1>Portfolio Website for Only $0 🎉</h1>
-        <button class="btn-buy" style="margin-top: 25px;" onclick="openBuyModal('Portfolio Website', 0)">
+        <button class="btn-buy" onclick="openBuyModal('Portfolio Website', 0)">
             Claim Your Offer
         </button>
     </div>
@@ -42,35 +44,36 @@
 
     <!-- Services -->
     <section class="services-section" id="services">
-        <h2>Our Services</h2>
+        <h1>Our Services</h1>
         <div class="services-grid">
 
             <div class="service-card">
                 <h3>🥉 Starter</h3>
                 <p class="description">Perfect for startups & small businesses</p>
                 <div class="feature">
-                    <p>✔ 1–3 Pages Website</p>
-                    <p>✔ Fully Mobile Responsive</p>
-                    <p>✔ Contact Form Integration</p>
-                    <p>✔ Basic SEO Setup</p>
-                    <p>✔ 1 Days Delivery</p>
+                    <p>1–3 Pages Website</p>
+<p>Fully Mobile Responsive</p>
+<p>Contact Form Integration</p>
+<p>Basic SEO Setup</p>
+<p>1 Day Delivery</p>
                 </div>
                 <div class="price">$49</div>
                 <button class="btn-buy" onclick="openBuyModal('Starter Website', 49)">Buy Now</button>
             </div>
 
             <div class="service-card popular">
-                <h3>🥈 Growth ⭐</h3>
+                <span class="popular-badge">Most Popular</span>
+                <h3>🥈 Growth</h3>
                 <p class="description">Best for businesses that want consistent leads</p>
 
                 <div class="feature">
-                    <p>✔ Up to 5 Pages Website</p>
-                    <p>✔ Modern Premium Design</p>
-                    <p>✔ Contact & Lead Capture Forms</p>
-                    <p>✔ On-Page SEO Optimization</p>
-                    <p>✔ WhatsApp Chat Integration</p>
-                    <p>✔ 2 Days Delivery</p>
-                    <p>✔ 2 Free Revisions</p>
+                    <p>Up to 5 Pages Website</p>
+<p>Modern Premium Design</p>
+<p>Contact & Lead Capture Forms</p>
+<p>On-Page SEO Optimization</p>
+<p>WhatsApp Chat Integration</p>
+<p>2 Days Delivery</p>
+<p>2 Free Revisions</p>
                 </div>
 
                 <div class="price">$99</div>
@@ -85,16 +88,16 @@
                 <p class="description">For serious businesses ready to scale</p>
 
                 <div class="feature">
-                    <p>✔ Up to 10 Pages Website</p>
-                    <p>✔ Custom UI/UX Design</p>
-                    <p>✔ Advanced SEO Setup</p>
-                    <p>✔ Blog Setup</p>
-                    <p>✔ Speed Optimization</p>
-                    <p>✔ Payment Gateway Integration</p>
-                    <p>✔ Admin Panel (If Required)</p>
-                    <p>✔ 3 Days Delivery</p>
-                    <p>✔ 5 Free Revisions</p>
-                    <p>✔ 30 Days Free Support</p>
+                    <p>Up to 10 Pages Website</p>
+<p>Custom UI/UX Design</p>
+<p>Advanced SEO Setup</p>
+<p>Blog Setup</p>
+<p>Speed Optimization</p>
+<p>Payment Gateway Integration</p>
+<p>Admin Panel (If Required)</p>
+<p>3 Days Delivery</p>
+<p>5 Free Revisions</p>
+<p>30 Days Free Support</p>
                 </div>
 
                 <div class="price">$499</div>
@@ -108,7 +111,7 @@
     </section>
 
     <section class="reviews-section" id="reviews">
-        <h2>Client Reviews</h2>
+        <h1>Client Reviews</h1>
         <div class="reviews-grid">
             <div class="review-card">
                 <p class="review-text">"Skull Stack transformed our outdated site into a high-converting machine. The
@@ -163,10 +166,9 @@
     </section>
 
     <section class="contact-section" id="contact">
-        <h2>Contact Us</h2>
+        <h1>Let's Talk</h1>
         <div class="contact-container">
             <div class="contact-info">
-                <h3>Let's Talk</h3>
                 <p>Have a project in mind? Reach out and let's build something great together.</p>
                 <div class="info-item">
                     <strong>Email:</strong>
@@ -232,7 +234,7 @@
       <h3>Enter Your Details</h3>
       <input type="text" id="customerName" placeholder="Your Name" />
       <input type="email" id="customerEmail" placeholder="Your Email" />
-      <button class="btn-modal" onclick="initiatePayment()">Proceed to Pay</button>
+      <button class="btn-buy" onclick="initiatePayment()">Proceed to Pay</button>
     </div>
   </div>
 
