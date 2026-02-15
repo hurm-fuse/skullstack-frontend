@@ -89,12 +89,139 @@ a {
   padding: 40px 60px 80px;
 }
 
-.service-card {
-  background: #fff;
-  border: 1px solid #D2042D);
-  padding: 40px 30px;
+/* Main Section Styling */
+.services-section {
+  background-color: #ffffff; /* Requested Background */
+  padding: 60px 20px;
   text-align: center;
-  backdrop-filter: blur(6px);
+}
+
+.services-section h2 {
+  color: #D2042D; /* Requested Text Color */
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Grid Layout */
+.services-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: center; /* Aligns cards vertically */
+}
+
+/* Individual Card Styling */
+.service-card {
+  background: #ffffff;
+  border: 1px solid #ffe6ea; /* Very light red border for definition */
+  border-radius: 15px;
+  padding: 30px;
+  width: 300px;
+  color: #D2042D; /* Requested Text Color */
+  box-shadow: 0 10px 30px rgba(210, 4, 45, 0.1); /* Soft red shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(210, 4, 45, 0.2);
+}
+
+/* Popular Card (Middle) Highlight */
+.service-card.popular {
+  border: 2px solid #D2042D;
+  transform: scale(1.05); /* Makes it slightly bigger */
+  z-index: 2;
+  box-shadow: 0 15px 40px rgba(210, 4, 45, 0.15);
+}
+
+.service-card.popular:hover {
+  transform: scale(1.05) translateY(-5px);
+}
+
+/* Card Content Typography */
+.service-card h3 {
+  font-size: 1.8rem;
+  margin: 0 0 10px;
+}
+
+.service-card .description {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin-bottom: 25px;
+  font-style: italic;
+  min-height: 40px; /* Aligns the features list */
+}
+
+/* Feature List */
+.feature {
+  text-align: left;
+  margin-bottom: 30px;
+  flex-grow: 1; /* Pushes price/button to bottom */
+}
+
+.feature p {
+  margin: 10px 0;
+  font-size: 0.95rem;
+  border-bottom: 1px dashed #ffe6ea;
+  padding-bottom: 5px;
+}
+
+.feature p:last-child {
+  border-bottom: none;
+}
+
+/* Price Styling */
+.price {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Button Styling */
+.btn-buy {
+  background-color: #D2042D;
+  color: #ffffff; /* White text on button for contrast */
+  border: 2px solid #D2042D;
+  padding: 12px 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.btn-buy:hover {
+  background-color: #ffffff;
+  color: #D2042D;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .services-grid {
+    flex-direction: column;
+  }
+  
+  .service-card {
+    width: 90%;
+  }
+
+  .service-card.popular {
+    transform: scale(1);
+  }
+  
+  .service-card.popular:hover {
+    transform: translateY(-5px);
+  }
 }
 
 /* ============================================
