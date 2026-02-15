@@ -12,14 +12,14 @@
 
 body {
   font-family: 'Segoe UI', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  background-color: #D2042D;
-  color: #FFFFFF;
+  background-color: #fff;
+  color: #D2042D;
   line-height: 1.6;
   min-height: 100vh;
 }
 
 a {
-  color: #FFFFFF;
+  color: #D2042D;
   text-decoration: none;
 }
 
@@ -89,66 +89,12 @@ a {
   padding: 40px 60px 80px;
 }
 
-.services-section h2 {
-  text-align: center;
-  font-size: 36px;
-  font-weight: 700;
-  margin-bottom: 50px;
-  letter-spacing: 1px;
-}
-
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
 .service-card {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: #D2042D;
+  border: 1px solid #FFFFFF;
   padding: 40px 30px;
   text-align: center;
   backdrop-filter: blur(6px);
-}
-
-.service-card h3 {
-  font-size: 22px;
-  font-weight: 700;
-  margin-bottom: 12px;
-}
-
-.service-card .description {
-  font-size: 15px;
-  opacity: 0.85;
-  margin-bottom: 20px;
-  line-height: 1.6;
-}
-
-.service-card .price {
-  font-size: 32px;
-  font-weight: 800;
-  margin-bottom: 24px;
-}
-
-.btn-buy {
-  display: inline-block;
-  padding: 14px 40px;
-  background-color: #FFFFFF;
-  color: #D2042D;
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  border: none;
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-}
-
-.btn-buy:hover {
-  background-color: #e0f7f8;
-  transform: scale(1.05);
 }
 
 /* ============================================
