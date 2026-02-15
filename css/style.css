@@ -3,7 +3,19 @@ body{
   color: white;
 }
 
+a{
+  text-decoration: none;
+}
+
+h1{
+  font-size: 50px;
+}
+
+p{
+  font-size: 30px;
+}
+
 nav{
-  background-color: #8493D6;
-  color: #D6DDFF;
+  background-color: #273EA5;
+  color: white;
 }
