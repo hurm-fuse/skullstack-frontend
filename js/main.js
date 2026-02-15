@@ -84,7 +84,7 @@ async function buyService(serviceName, amount) {
     const options = {
       key: RAZORPAY_KEY,
       amount: data.amount,
-      currency: 'INR',
+      currency: 'USD',
       name: 'Skull Stack',
       description: serviceName,
       order_id: data.razorpayOrderId,
