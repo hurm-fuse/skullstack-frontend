@@ -20,3 +20,7 @@ nav{
   background-color: #273EA5;
   color: white;
 }
+
+.container{
+  padding: 100px 100px;
+}
