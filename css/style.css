@@ -1,0 +1,240 @@
+/* Global Reset & Theme */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    border-radius: 0 !important; /* Force no curves */
+    box-shadow: none !important;  /* Force no shadows */
+}
+
+body {
+    background-color: #D2042D;
+    color: #ffffff;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: opacity 0.3s;
+}
+
+a:hover {
+    opacity: 0.7;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    border-bottom: 2px solid #ffffff;
+}
+
+.nav-links a {
+    margin-left: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Offer Banner */
+#offer {
+    background-color: #ffffff;
+    color: #D2042D;
+    text-align: center;
+    padding: 40px 20px;
+    border-bottom: 5px solid #000; /* Contrast separator */
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+/* Services Section */
+.services-section {
+    padding: 60px 5%;
+}
+
+.services-section h2, .reviews-section h2, .contact-section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.service-card {
+    border: 3px solid #ffffff;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.service-card.popular {
+    background-color: #ffffff;
+    color: #D2042D;
+}
+
+.service-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.price {
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin: 20px 0;
+}
+
+/* Buttons */
+.btn-buy, .btn-modal {
+    background-color: transparent;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    padding: 12px 25px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.3s, color 0.3s;
+}
+
+.btn-buy:hover {
+    background-color: #ffffff;
+    color: #D2042D;
+}
+
+/* White background card button fix */
+.popular .btn-buy {
+    border-color: #D2042D;
+    color: #D2042D;
+}
+
+.popular .btn-buy:hover {
+    background-color: #D2042D;
+    color: #ffffff;
+}
+
+/* Reviews Section */
+.reviews-section {
+    padding: 60px 5%;
+    border-top: 2px solid #ffffff;
+}
+
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.review-card {
+    border: 1px solid #ffffff;
+    padding: 20px;
+}
+
+.stars {
+    margin-top: 10px;
+}
+
+/* Contact Section */
+.contact-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    padding: 0 5% 60px 5%;
+}
+
+.contact-info h3 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.info-item {
+    margin-bottom: 10px;
+}
+
+/* Forms */
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input, textarea {
+    background: transparent;
+    border: 2px solid #ffffff;
+    padding: 12px;
+    color: #ffffff;
+    font-size: 1rem;
+}
+
+input::placeholder, textarea::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 40px;
+    border-top: 2px solid #ffffff;
+    font-weight: bold;
+}
+
+/* Modal Styling */
+.modal-overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-box {
+    background: #D2042D;
+    border: 4px solid #ffffff;
+    padding: 40px;
+    width: 90%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero h1 { font-size: 2.2rem; }
+    .navbar { flex-direction: column; gap: 15px; }
+}
