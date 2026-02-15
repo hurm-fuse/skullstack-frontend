@@ -85,19 +85,16 @@ a {
 /* ============================================
    SERVICES SECTION
    ============================================ */
-.services-section {
-  padding: 40px 60px 80px;
-}
 
 /* Main Section Styling */
 .services-section {
-  background-color: #ffffff; /* Requested Background */
+  background-color: #ffffff;
   padding: 60px 20px;
   text-align: center;
 }
 
 .services-section h2 {
-  color: #D2042D; /* Requested Text Color */
+  color: #D2042D;
   font-size: 2.5rem;
   margin-bottom: 50px;
   text-transform: uppercase;
@@ -112,66 +109,68 @@ a {
   flex-wrap: wrap;
   max-width: 1200px;
   margin: 0 auto;
-  align-items: center; /* Aligns cards vertically */
+  align-items: center;
 }
 
 /* Individual Card Styling */
 .service-card {
   background: #ffffff;
-  border: 1px solid #ffe6ea; /* Very light red border for definition */
-  border-radius: 15px;
+  /* Distinct border is necessary since there is no shadow */
+  border: 1px solid #D2042D; 
+  /* Removed border-radius */
+  border-radius: 0; 
+  /* Removed box-shadow */
+  box-shadow: none; 
+  
   padding: 30px;
   width: 300px;
-  color: #D2042D; /* Requested Text Color */
-  box-shadow: 0 10px 30px rgba(210, 4, 45, 0.1); /* Soft red shadow */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
+  color: #D2042D;
+  transition: transform 0.2s ease, background-color 0.2s ease;
   display: flex;
   flex-direction: column;
 }
 
+/* Hover Effect - Simple movement only */
 .service-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 15px 40px rgba(210, 4, 45, 0.2);
 }
 
 /* Popular Card (Middle) Highlight */
 .service-card.popular {
-  border: 2px solid #D2042D;
-  transform: scale(1.05); /* Makes it slightly bigger */
+  border: 3px solid #D2042D; /* Thicker border to make it stand out */
+  transform: scale(1.05);
   z-index: 2;
-  box-shadow: 0 15px 40px rgba(210, 4, 45, 0.15);
+  background-color: #fff0f2; /* Very slight tint to differentiate "Popular" */
 }
 
 .service-card.popular:hover {
   transform: scale(1.05) translateY(-5px);
 }
 
-/* Card Content Typography */
+/* Typography */
 .service-card h3 {
   font-size: 1.8rem;
   margin: 0 0 10px;
+  text-transform: uppercase;
 }
 
 .service-card .description {
   font-size: 0.9rem;
-  opacity: 0.8;
   margin-bottom: 25px;
-  font-style: italic;
-  min-height: 40px; /* Aligns the features list */
+  min-height: 40px;
 }
 
 /* Feature List */
 .feature {
   text-align: left;
   margin-bottom: 30px;
-  flex-grow: 1; /* Pushes price/button to bottom */
+  flex-grow: 1;
 }
 
 .feature p {
   margin: 10px 0;
   font-size: 0.95rem;
-  border-bottom: 1px dashed #ffe6ea;
+  border-bottom: 1px solid #ffe6ea;
   padding-bottom: 5px;
 }
 
@@ -189,15 +188,18 @@ a {
 /* Button Styling */
 .btn-buy {
   background-color: #D2042D;
-  color: #ffffff; /* White text on button for contrast */
-  border: 2px solid #D2042D;
-  padding: 12px 25px;
+  color: #ffffff;
+  border: 1px solid #D2042D;
+  padding: 15px 25px; /* Slightly larger padding for flat look */
   font-size: 1rem;
   font-weight: 600;
-  border-radius: 50px;
+  text-transform: uppercase;
   cursor: pointer;
-  transition: all 0.3s ease;
   width: 100%;
+  transition: all 0.2s ease;
+  
+  /* Removed border-radius */
+  border-radius: 0; 
 }
 
 .btn-buy:hover {
@@ -217,6 +219,7 @@ a {
 
   .service-card.popular {
     transform: scale(1);
+    margin: 20px 0;
   }
   
   .service-card.popular:hover {
