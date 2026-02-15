@@ -12,14 +12,14 @@
 
 body {
   font-family: 'Segoe UI', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  background-color: #fff;
-  color: #D2042D;
+  background-color: #D2042D;
+  color: #FFFFFF;
   line-height: 1.6;
   min-height: 100vh;
 }
 
 a {
-  color: #D2042D;
+  color: #FFFFFF;
   text-decoration: none;
 }
 
@@ -90,8 +90,8 @@ a {
 }
 
 .service-card {
-  background: #D2042D;
-  border: 1px solid #FFFFFF;
+  background: #fff;
+  border: 1px solid #D2042D);
   padding: 40px 30px;
   text-align: center;
   backdrop-filter: blur(6px);
