@@ -740,3 +740,58 @@ a {
     padding: 60px 20px;
   }
 }
+
+/* Offer Section Styling */
+#offer {
+  background-color: #ffffff;
+  color: #D2042D;
+  padding: 80px 20px;
+  text-align: center;
+  border: 4px solid #D2042D; /* Thick border to make the free offer pop */
+  margin: 40px auto;
+  max-width: 800px;
+  /* Resetting everything for the flat look */
+  border-radius: 0;
+  box-shadow: none;
+}
+
+#offer h1 {
+  font-size: 3rem;
+  margin: 0;
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+/* Button Styling matching the flat theme */
+#offer .btn-buy {
+  background-color: #D2042D;
+  color: #ffffff;
+  border: 2px solid #D2042D;
+  padding: 15px 40px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  /* Removed border-radius */
+  border-radius: 0;
+  transition: all 0.2s ease-in-out;
+}
+
+#offer .btn-buy:hover {
+  background-color: #ffffff;
+  color: #D2042D;
+  /* Inverts on hover for a sharp interactive feel */
+}
+
+/* Responsive adjustment */
+@media (max-width: 600px) {
+  #offer h1 {
+    font-size: 2rem;
+  }
+  
+  #offer {
+    margin: 20px;
+    padding: 40px 15px;
+  }
+}
