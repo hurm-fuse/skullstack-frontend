@@ -1,8 +1,11 @@
-// js/chat.js - Client chat page with 3-second polling
+/**
+ * js/chat.js - Skull Stack Support Chat
+ * Features: 3-second polling, flicker prevention, auto-scroll, and XSS protection.
+ */
 
 const API_BASE = 'https://skullstack.onrender.com/api';
 
-// Get orderId from URL
+// 1. SESSION & ROUTING CHECK
 const params = new URLSearchParams(window.location.search);
 const orderId = params.get('orderId');
 const token = localStorage.getItem('aethex_token');
@@ -12,10 +15,15 @@ if (!orderId || !token) {
   window.location.href = 'index.html';
 }
 
-// Display order ID
-document.getElementById('chatOrderInfo').textContent = `Order: ${orderId}`;
+// Display shortened Order ID for cleaner UI
+document.getElementById('chatOrderInfo').textContent = `Order: ${orderId.substring(0, 12)}...`;
 
-// Fetch messages
+// State management to prevent UI flickering during polling
+let lastMessageCount = 0;
+
+/**
+ * Fetch messages from the server
+ */
 async function fetchMessages() {
   try {
     const res = await fetch(`${API_BASE}/chat/${orderId}`, {
@@ -23,50 +31,72 @@ async function fetchMessages() {
     });
 
     if (res.status === 401 || res.status === 403) {
-      alert('Session expired or unauthorized. Please purchase a service again.');
+      alert('Session expired. Please log in again.');
       window.location.href = 'index.html';
       return;
     }
 
     const messages = await res.json();
-    renderMessages(messages);
+    
+    // Only re-render if the number of messages has changed
+    if (messages.length !== lastMessageCount) {
+      renderMessages(messages);
+      lastMessageCount = messages.length;
+    }
   } catch (err) {
     console.error('Error fetching messages:', err);
   }
 }
 
-// Render messages in chat
+/**
+ * Render messages into the chat container
+ */
 function renderMessages(messages) {
   const container = document.getElementById('chatMessages');
-  container.innerHTML = '';
+  
+  // Flicker prevention: Only re-render if count changes
+  if (messages.length === lastMessageCount) return;
+  lastMessageCount = messages.length;
 
-  if (messages.length === 0) {
-    container.innerHTML = '<p style="text-align:center; opacity:0.6; margin-top:40px;">No messages yet. Say hello!</p>';
-    return;
-  }
+  container.innerHTML = '';
 
   messages.forEach(msg => {
     const bubble = document.createElement('div');
-    bubble.className = `message-bubble ${msg.sender}`;
+    
+    // Assign 'user' or 'admin' class based on the sender
+    const isMe = msg.sender !== 'admin';
+    bubble.className = `message-bubble ${isMe ? 'user' : 'admin'}`;
 
-    const time = new Date(msg.createdAt).toLocaleString();
+    const time = new Date(msg.createdAt).toLocaleTimeString([], { 
+      hour: '2-digit', 
+      minute: '2-digit' 
+    });
+
     bubble.innerHTML = `
-      <div>${escapeHtml(msg.message)}</div>
-      <div class="message-meta">${msg.sender === 'admin' ? 'Skull Stack Team' : 'You'} · ${time}</div>
+      <div class="message-content">${escapeHtml(msg.message)}</div>
+      <div class="message-meta">
+        ${isMe ? 'You' : 'Skull Stack Support'} • ${time}
+      </div>
     `;
 
     container.appendChild(bubble);
   });
 
-  // Auto-scroll to bottom
   container.scrollTop = container.scrollHeight;
 }
 
-// Send message
+/**
+ * Send a new message to the server
+ */
 async function sendMessage() {
   const input = document.getElementById('messageInput');
   const message = input.value.trim();
+  
   if (!message) return;
+
+  // Visual feedback: clear input immediately
+  input.value = '';
+  input.placeholder = "Sending...";
 
   try {
     const res = await fetch(`${API_BASE}/chat/${orderId}`, {
@@ -79,24 +109,30 @@ async function sendMessage() {
     });
 
     if (res.ok) {
-      input.value = '';
-      fetchMessages();
+      input.placeholder = "Type a message...";
+      fetchMessages(); // Refresh immediately after sending
     } else {
       const data = await res.json();
       alert(data.message || 'Error sending message');
+      input.placeholder = "Error occurred. Try again.";
     }
   } catch (err) {
     console.error('Error sending message:', err);
+    input.placeholder = "Network error.";
   }
 }
 
-// Escape HTML to prevent XSS
+/**
+ * Security: Escape HTML to prevent XSS attacks
+ */
 function escapeHtml(text) {
   const div = document.createElement('div');
   div.appendChild(document.createTextNode(text));
   return div.innerHTML;
 }
 
-// Initial fetch + polling every 3 seconds
+// Initial Load
 fetchMessages();
+
+// Set Polling: Check for new messages every 3 seconds
 setInterval(fetchMessages, 3000);
