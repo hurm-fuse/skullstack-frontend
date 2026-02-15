@@ -1,10 +1,10 @@
 /* ============================================
-   AETHEX - Consolidated Global Styles
-   Primary: #D2042D | Text: #FFFFFF
-   Visual Style: Modern Glassmorphism
+   AETHEX / SKULL STACK - FULL CONSOLIDATED STYLES
+   Primary Brand: #D2042D (Red)
+   Secondary: #FFFFFF (White)
    ============================================ */
 
-/* 1. Reset & Base */
+/* 1. Reset & Base Styles */
 * {
   margin: 0;
   padding: 0;
@@ -17,7 +17,7 @@ html {
 
 body {
   font-family: 'Segoe UI', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  background-color: #D2042D;
+  background-color: #D2042D; /* Main Brand Red */
   color: #FFFFFF;
   line-height: 1.6;
   min-height: 100vh;
@@ -34,12 +34,12 @@ ul {
   list-style: none;
 }
 
-/* 2. Navigation */
+/* 2. Navbar */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 50px;
+  padding: 15px 50px;
   background: rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -49,11 +49,12 @@ ul {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.navbar .logo {
-  font-size: 26px;
-  font-weight: 800;
-  letter-spacing: 5px;
-  text-transform: uppercase;
+.navbar .logo img {
+  transition: transform 0.3s ease;
+}
+
+.navbar .logo img:hover {
+  transform: scale(1.1);
 }
 
 .navbar .nav-links a {
@@ -61,6 +62,7 @@ ul {
   font-size: 13px;
   letter-spacing: 2px;
   text-transform: uppercase;
+  font-weight: 600;
   opacity: 0.8;
 }
 
@@ -80,18 +82,19 @@ ul {
   font-weight: 800;
   letter-spacing: -1px;
   margin-bottom: 20px;
+  line-height: 1.1;
   text-transform: uppercase;
 }
 
 .hero p {
-  font-size: 1.2rem;
+  font-size: clamp(16px, 2vw, 20px);
   opacity: 0.9;
   max-width: 700px;
   margin: 0 auto;
-  line-height: 1.6;
+  font-weight: 300;
 }
 
-/* 4. Redesigned Services Section */
+/* 4. Services Section */
 .services-section {
   padding: 100px 60px;
   max-width: 1300px;
@@ -104,15 +107,10 @@ ul {
 }
 
 .section-header h2 {
-  font-size: 36px;
+  font-size: 42px;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 3px;
-  margin-bottom: 10px;
-}
-
-.section-header p {
-  opacity: 0.7;
-  font-size: 18px;
+  letter-spacing: 2px;
 }
 
 .services-grid {
@@ -124,102 +122,114 @@ ul {
 
 /* Service Cards */
 .service-card {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   padding: 50px 35px;
   display: flex;
   flex-direction: column;
   position: relative;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
   backdrop-filter: blur(12px);
 }
 
 .service-card:hover {
   transform: translateY(-10px);
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.12);
   border-color: rgba(255, 255, 255, 0.4);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
 }
 
-/* Popular (Growth) Card */
+/* Popular Badge Logic */
 .service-card.popular {
-  background: rgba(255, 255, 255, 0.12);
   border: 2px solid #FFFFFF;
-  transform: scale(1.05);
+  transform: scale(1.03);
   z-index: 2;
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .popular-badge {
   position: absolute;
-  top: 0;
+  top: -15px;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
   background: #FFFFFF;
   color: #D2042D;
-  padding: 6px 20px;
-  font-weight: 800;
+  padding: 5px 20px;
   font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  font-weight: 900;
   border-radius: 50px;
-  white-space: nowrap;
+  letter-spacing: 1px;
 }
 
-/* Card Typography */
+.card-header .icon {
+  font-size: 40px;
+  display: block;
+  margin-bottom: 15px;
+}
+
 .service-card h3 {
-  font-size: 26px;
-  margin-bottom: 8px;
-  font-weight: 700;
+  font-size: 28px;
+  margin-bottom: 10px;
 }
 
 .service-card .description {
   font-size: 14px;
-  opacity: 0.75;
-  margin-bottom: 25px;
+  opacity: 0.7;
+  margin-bottom: 30px;
   min-height: 40px;
 }
 
+/* Feature List Styling */
+.feature-list {
+  margin-bottom: 30px;
+  flex-grow: 1;
+}
+
+.feature-list li {
+  margin-bottom: 12px;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.check {
+  margin-right: 10px;
+}
+
+.delivery, .revision, .support {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 13px;
+  font-weight: 700;
+  opacity: 0.8;
+}
+
+/* Pricing */
 .service-card .price {
-  font-size: 52px;
+  font-size: 54px;
   font-weight: 800;
   margin-bottom: 30px;
   display: flex;
-  justify-content: center;
   align-items: flex-start;
+  justify-content: center;
 }
 
-.service-card .price::before {
-  content: '$';
+.service-card .price span {
   font-size: 20px;
   margin-top: 12px;
   margin-right: 4px;
 }
 
-/* Features */
-.feature {
-  text-align: left;
-  margin-bottom: 40px;
-  flex-grow: 1;
-}
-
-.feature p {
-  margin-bottom: 12px;
-  font-size: 15px;
-  display: flex;
-  align-items: center;
-  opacity: 0.9;
-}
-
-/* Shared Button Styles */
-.btn-buy, .btn-modal, .contact-form .btn-buy {
+/* Buttons */
+.btn-buy {
   width: 100%;
   padding: 16px;
   background-color: #FFFFFF;
   color: #D2042D;
   font-size: 14px;
   font-weight: 800;
-  letter-spacing: 2px;
   text-transform: uppercase;
+  letter-spacing: 1px;
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -228,13 +238,20 @@ ul {
 .btn-buy:hover {
   background-color: #f0f0f0;
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
 /* 5. Reviews Section */
 .reviews-section {
   padding: 100px 60px;
   background: rgba(0, 0, 0, 0.1);
+}
+
+.reviews-section h2 {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 60px;
+  text-transform: uppercase;
 }
 
 .reviews-grid {
@@ -249,23 +266,23 @@ ul {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 40px;
-  backdrop-filter: blur(6px);
+  transition: transform 0.3s ease;
+}
+
+.review-card:hover {
+  transform: translateY(-5px);
 }
 
 .review-text {
   font-style: italic;
   font-size: 16px;
   margin-bottom: 25px;
-  line-height: 1.8;
-}
-
-.review-card h4 {
-  font-size: 18px;
-  margin-bottom: 5px;
+  opacity: 0.9;
 }
 
 .stars {
   color: #FFD700;
+  margin-top: 10px;
   letter-spacing: 3px;
 }
 
@@ -276,34 +293,100 @@ ul {
   margin: 0 auto;
 }
 
+.contact-section h2 {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 36px;
+}
+
 .contact-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 80px;
 }
 
-.contact-info { flex: 1; }
-.contact-form { flex: 1.2; background: rgba(255,255,255,0.03); padding: 40px; border: 1px solid rgba(255,255,255,0.1); }
+.contact-info h3 {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.info-item {
+  margin-bottom: 30px;
+}
+
+.info-item strong {
+  display: block;
+  font-size: 12px;
+  text-transform: uppercase;
+  opacity: 0.6;
+  letter-spacing: 2px;
+  margin-bottom: 5px;
+}
+
+.info-item span {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.contact-form {
+  background: rgba(0,0,0,0.1);
+  padding: 40px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
 
 .contact-form input, 
 .contact-form textarea {
   width: 100%;
   padding: 15px;
   margin-bottom: 20px;
-  background: rgba(255,255,255,0.07);
+  background: rgba(255,255,255,0.05);
   border: 1px solid rgba(255,255,255,0.2);
   color: white;
+  font-family: inherit;
   outline: none;
 }
 
-.contact-form input:focus { border-color: white; }
+.contact-form textarea {
+    height: 120px;
+    resize: vertical;
+}
 
-/* 7. Modal Styles */
+.contact-form input:focus, .contact-form textarea:focus { 
+    border-color: white; 
+}
+
+/* 7. Special Offer Block */
+#offer {
+  max-width: 900px;
+  margin: 80px auto;
+  text-align: center;
+  background: #FFFFFF;
+  color: #D2042D;
+  padding: 60px 40px;
+}
+
+#offer h1 {
+    font-size: clamp(24px, 5vw, 42px);
+    margin-bottom: 10px;
+}
+
+#offer .btn-buy {
+    background: #D2042D;
+    color: #FFFFFF;
+    max-width: 300px;
+}
+
+#offer .btn-buy:hover {
+    background: #a30323;
+}
+
+/* 8. Modals */
 .modal-overlay {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(8px);
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(5px);
   z-index: 2000;
   justify-content: center;
   align-items: center;
@@ -313,53 +396,61 @@ ul {
 
 .modal-box {
   background: #D2042D;
-  border: 1px solid rgba(255, 255, 255, 0.2);
   padding: 50px;
   width: 90%;
   max-width: 450px;
-  position: relative;
+  border: 1px solid rgba(255,255,255,0.3);
+  text-align: center;
 }
 
-/* 8. Chat & Admin System */
-.chat-container, .admin-container {
-  max-width: 800px;
-  margin: 50px auto;
-  padding: 40px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
+.modal-box h3 {
+    margin-bottom: 25px;
+    font-size: 24px;
 }
 
-.message-bubble {
-  max-width: 80%;
-  padding: 15px 20px;
-  margin-bottom: 15px;
-  border-radius: 4px;
+.modal-box input {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 15px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid white;
+    color: white;
+    outline: none;
 }
 
-.message-bubble.client { background: rgba(255,255,255,0.15); align-self: flex-end; margin-left: auto; }
-.message-bubble.admin { background: rgba(0,0,0,0.3); align-self: flex-start; }
+.btn-modal {
+    width: 100%;
+    padding: 15px;
+    background: white;
+    color: #D2042D;
+    border: none;
+    font-weight: 800;
+    text-transform: uppercase;
+    cursor: pointer;
+}
 
 /* 9. Footer */
 .footer {
+  padding: 60px;
   text-align: center;
-  padding: 50px;
-  opacity: 0.6;
+  border-top: 1px solid rgba(255,255,255,0.1);
   font-size: 13px;
   letter-spacing: 1px;
-  text-transform: uppercase;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  opacity: 0.6;
 }
 
-/* 10. Responsive Design */
-@media (max-width: 992px) {
-  .contact-container { flex-direction: column; }
-  .service-card.popular { transform: scale(1); margin: 20px 0; }
+/* 10. Responsive Media Queries */
+@media (max-width: 1024px) {
+  .contact-container { grid-template-columns: 1fr; gap: 40px; }
+  .services-section, .reviews-section { padding: 60px 30px; }
 }
 
 @media (max-width: 768px) {
   .navbar { padding: 15px 25px; }
-  .navbar .nav-links { display: none; } /* Consider adding a hamburger menu here */
-  .services-section { padding: 60px 20px; }
+  .navbar .nav-links { display: flex; gap: 15px; }
+  .navbar .nav-links a { margin-left: 0; font-size: 11px; }
   .hero h1 { font-size: 40px; }
-  .contact-section, .reviews-section { padding: 60px 20px; }
+  .service-card.popular { transform: scale(1); margin: 20px 0; }
+  .services-grid { grid-template-columns: 1fr; }
+  .contact-section { padding: 40px 20px; }
 }
