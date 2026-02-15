@@ -1,44 +1,38 @@
-// js/main.js
+// js/main.js - Landing page: Buy flow + Razorpay integration
 
 const API_BASE = 'https://skullstack.onrender.com/api';
 
-// Variables to hold current selection
 let selectedService = '';
 let selectedAmount = 0;
 
-// Ensure functions are available globally for HTML onclick attributes
-window.openBuyModal = function(serviceName, amount) {
+// Open the customer info modal
+function openBuyModal(serviceName, amount) {
   selectedService = serviceName;
   selectedAmount = amount;
-  
-  const modal = document.getElementById('buyModal');
-  if (modal) {
-    modal.classList.add('active');
-  } else {
-    console.error("Error: Modal with ID 'buyModal' not found in HTML.");
+  document.getElementById('buyModal').classList.add('active');
+}
+
+// Close modal on overlay click
+document.getElementById('buyModal').addEventListener('click', function (e) {
+  if (e.target === this) {
+    this.classList.remove('active');
   }
-};
+});
 
-window.initiatePayment = async function() {
-  // 1. Get Input Values
-  const nameInput = document.getElementById('customerName');
-  const emailInput = document.getElementById('customerEmail');
 
-  if (!nameInput || !emailInput) {
-    alert("Error: Input fields not found.");
-    return;
-  }
+// Initiate payment
+async function initiatePayment() {
 
-  const name = nameInput.value.trim();
-  const email = emailInput.value.trim();
+  // ✅ FIRST get name & email
+  const name = document.getElementById('customerName').value.trim();
+  const email = document.getElementById('customerEmail').value.trim();
 
-  // 2. Validations
   if (!name || !email) {
     alert('Please enter your name and email.');
     return;
   }
 
-  // Basic email regex validation
+  // Basic email validation
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     alert('Please enter a valid email address.');
     return;
@@ -69,7 +63,7 @@ window.initiatePayment = async function() {
       // Close modal
       document.getElementById('buyModal').classList.remove('active');
 
-      // Save token & redirect to Chat
+      // Save token & redirect
       localStorage.setItem('aethex_token', data.token);
       window.location.href = `chat.html?orderId=${data.orderId}`;
 
@@ -77,13 +71,15 @@ window.initiatePayment = async function() {
       console.error("FREE ORDER ERROR:", err);
       alert('Server error. Please try again.');
     }
-    return;
+
+    return; // IMPORTANT
   }
 
   // =========================
   // 💳 PAID FLOW (RAZORPAY)
   // =========================
   try {
+
     const res = await fetch(`${API_BASE}/payment/create-order`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -102,17 +98,18 @@ window.initiatePayment = async function() {
       return;
     }
 
-    // Close modal while payment processes
+    // Close modal
     document.getElementById('buyModal').classList.remove('active');
 
     const options = {
       key: data.keyId,
       amount: data.amount,
       currency: data.currency,
-      name: 'AETHEX', // Or 'Skull Stack' if you prefer
+      name: 'AETHEX',
       description: selectedService,
       order_id: data.razorpayOrderId,
       handler: async function (response) {
+
         try {
           const verifyRes = await fetch(`${API_BASE}/payment/verify`, {
             method: 'POST',
@@ -156,61 +153,4 @@ window.initiatePayment = async function() {
     console.error("CREATE ORDER ERROR:", err);
     alert('Something went wrong. Please try again.');
   }
-};
-
-
-// =========================
-// EVENT LISTENERS (Run when HTML is loaded)
-// =========================
-document.addEventListener('DOMContentLoaded', () => {
-
-  // 1. Close Modal Logic (Clicking outside the box)
-  const modal = document.getElementById('buyModal');
-  if (modal) {
-    modal.addEventListener('click', function (e) {
-      // If the user clicks the overlay (this), close it.
-      // If they click the .modal-box, do nothing.
-      if (e.target === this) {
-        this.classList.remove('active');
-      }
-    });
-  }
-
-  // 2. Contact Form Logic (Replaces the inline script in your HTML)
-  const contactForm = document.getElementById('contactForm');
-  
-  if (contactForm) {
-    contactForm.addEventListener('submit', async function(e) {
-      e.preventDefault(); // Stop page reload
-      
-      const submitBtn = contactForm.querySelector('button[type="submit"]');
-      const originalText = submitBtn.innerText;
-      submitBtn.innerText = "Sending...";
-      submitBtn.disabled = true;
-
-      const formData = new FormData(contactForm);
-
-      try {
-        const response = await fetch(contactForm.action, {
-          method: 'POST',
-          body: formData
-        });
-
-        const result = await response.json();
-        
-        if (result.success) {
-          window.location.href = "thankyou.html";
-        } else {
-          alert("Error sending form. Try again!");
-          submitBtn.innerText = originalText;
-          submitBtn.disabled = false;
-        }
-      } catch (err) {
-        console.error(err);
-        alert("Error sending form. Try again!");
-        submitBtn.innerText = originalText;
-        submitBtn.disabled = false;
-      }
-    });
-  }
-});
+}
